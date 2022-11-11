@@ -8,6 +8,7 @@
 int
 main(int argc, char *argv[])
 {
+        int ret;
         char *request_json;
         kbs_request_t kbs_req;
         snp_request_t snp_req;
@@ -27,7 +28,13 @@ main(int argc, char *argv[])
         else
                 printf("ACTUAL:\t\t%s\n", request_json);
 
-        free(request_json);
+        char *buf = (char *) malloc(500);
+
+        ret = json_parse_label(TEST_KBS_CHALLENGE, "nonce", &buf);
+        if (!ret)
+                printf("ERROR: json_parse_label()\n");
+
+        printf("buf: %s\n", buf);
 
         return 0;
 }

@@ -5,6 +5,13 @@
 #define TEST_KBS_REQUEST \
 "{\"extra-params\":\"{\"workload_id\":\"id\"}\",\"tee\":\"snp\",\"version\":\"0.0.0\"}"
 
+#define TEST_KBS_CHALLENGE \
+"{\"extra-params\":\"\",\"nonce\":\"abc123def456ghi789\"}"
+
+// kbs_util.c
+char *tee_str(int);
+int json_parse_label(char *, char *, char **);
+
 enum tee {
         TEE_SEV,
         TEE_SGX,
@@ -24,6 +31,3 @@ typedef struct {
 
 // kbs_request.c
 char *kbs_request_marshal(kbs_request_t *);
-
-// kbs_util.c
-char *tee_str(int);
