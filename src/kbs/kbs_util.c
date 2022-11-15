@@ -6,8 +6,6 @@
 
 #include "kbs_types.h"
 
-#define JSON_VAL_MAX 128
-
 static char *json_find_label(char *, const char *);
 static int json_collect_value(char *, char **);
 
@@ -46,7 +44,7 @@ json_find_label(char *json_str, const char *label)
 {
         int ret;
         size_t json_sz, label_sz;
-        char buf[JSON_VAL_MAX], *p;
+        char buf[BUF_MAX], *p;
 
         json_sz = strlen(json_str);
         sprintf(buf, "\"%s\":\"", label);

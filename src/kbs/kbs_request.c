@@ -7,8 +7,6 @@
 
 #include "kbs_types.h"
 
-#define BLK_SIZE 256
-
 static int kbs_request_json_marshal(char *, kbs_request_t *);
 static void kbs_request_snp_json_marshal(char *, char *, void *);
 
@@ -35,7 +33,7 @@ kbs_request_json_marshal(char *json, kbs_request_t *req)
 {
         char *blk;
 
-        blk = (char *) malloc(BLK_SIZE);
+        blk = (char *) malloc(BUF_MAX);
         if (blk == NULL) {
                 fprintf(stderr, "ERROR: malloc(3)\n");
                 return 0;

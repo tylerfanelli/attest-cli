@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 #define JSON_MAX_LEN 1024
+#define BUF_MAX 256
 
 #define TEST_KBS_REQUEST \
 "{\"extra-params\":\"{\"workload_id\":\"id\"}\",\"tee\":\"snp\",\"version\":\"0.0.0\"}"

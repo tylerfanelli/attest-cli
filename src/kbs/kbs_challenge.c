@@ -4,19 +4,17 @@
 
 #include "kbs_types.h"
 
-#define CHALLENGE_BUF_MAX 256
-
 int
 kbs_challenge_parse(char *str, kbs_challenge_t *challenge)
 {
         int ret;
         char *eparams, *nonce;
 
-        eparams = malloc(CHALLENGE_BUF_MAX);
+        eparams = malloc(BUF_MAX);
         if (!eparams)
                 return 0;
 
-        nonce = malloc(CHALLENGE_BUF_MAX);
+        nonce = malloc(BUF_MAX);
         if (!nonce) {
                 free(eparams);
                 return 0;
