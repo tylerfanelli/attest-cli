@@ -31,3 +31,11 @@ typedef struct {
 
 // kbs_request.c
 char *kbs_request_marshal(kbs_request_t *);
+
+typedef struct {
+        char *nonce;
+        void *extra_params;
+} kbs_challenge_t;
+
+// kbs_challenge.c
+int kbs_challenge_parse(char *, kbs_challenge_t *);

@@ -12,6 +12,7 @@ main(int argc, char *argv[])
         char *request_json;
         kbs_request_t kbs_req;
         snp_request_t snp_req;
+        kbs_challenge_t kbs_chal;
 
         snp_req.workload_id = "id";
 
@@ -28,13 +29,12 @@ main(int argc, char *argv[])
         else
                 printf("ACTUAL:\t\t%s\n", request_json);
 
-        char *buf = (char *) malloc(500);
-
-        ret = json_parse_label(TEST_KBS_CHALLENGE, "nonce", &buf);
+        ret = kbs_challenge_parse(TEST_KBS_CHALLENGE, &kbs_chal);
         if (!ret)
-                printf("ERROR: json_parse_label()\n");
-
-        printf("buf: %s\n", buf);
+                printf("ERROR: kbs_challenge_parse()\n");
+        else
+                printf("kbs_chal {\n\tnonce: \"%s\";\n\textra-params: \"%s\";\n}\n",
+                        kbs_chal.nonce, (char *) kbs_chal.extra_params);
 
         return 0;
 }
